@@ -2,18 +2,18 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>User Table</title>
+  <title>Admin Dashboard update</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
   <style>
-    /* Style the navigation bar */
     .sidenav {
       height: 100%;
-      width: 0;
+      width: 250px;
       position: fixed;
       z-index: 1;
       top: 0;
       left: 0;
-      background-color: #f8f9fa;
+      background-color: #343a40;
       overflow-x: hidden;
       padding-top: 20px;
       transition: 0.5s;
@@ -22,54 +22,330 @@
       padding: 6px 8px 6px 16px;
       text-decoration: none;
       font-size: 16px;
-      color: #343a40;
+      color: #f8f9fa;
       display: block;
     }
     .sidenav a:hover {
       color: #007bff;
     }
-    .content {
-      margin-left: 0;
-      padding-left: 20px;
-      transition: 0.5s;
-    }
-    .content.open {
-      margin-left: 200px;
+    .main-content {
+      margin-left: 250px;
+      padding: 20px;
     }
   </style>
 </head>
 <body>
-<div class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container">
-    <a class="navbar-brand">Admin</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" href="/adminDashboard">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/adminUserTable">Users</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/logs">Logs</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/studentinfo">Form</a>
-        </li>
-      </ul>
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a href="/logout" class="btn btn-danger">Logout</a>
-        </li>
-      </ul>
-    </div>
+  <div class="sidenav">
+    <a href="/adminDashboard">Dashboard</a>
+    <a href="/adminUserTable">User Table</a>
+    <!-- Include more links as necessary -->
   </div>
-</div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <div class="sidenav">
+    <a class="navbar-brand">Admin</a>
+    <a class="nav-link" href="/adminDashboard">Home</a>
+    <a class="nav-link" href="/adminUserTable">Users</a>
+    <a class="nav-link" href="/logs">Logs</a>
+    <a class="nav-link" href="/studentinfo">Form</a>
+    <a href="/logout" class="btn btn-danger">Logout</a>
+  </div>
+
+  <div class="main-content">
+    <h1>Admin Dashboard</h1>
+
+    <div id="chart">
+    </div>
+    <!-- You can include more HTML elements as necessary -->
+
+    <!-- The div where you want to display the chart -->
+    <div id="sales-chart"></div>
+
+    <script>
+var options = {
+          series: [{
+          name: 'Net Profit',
+          data: [44, 55, 57, 56, 61, 58, 63, 60, 66]
+        }, {
+          name: 'Revenue',
+          data: [76, 85, 101, 98, 87, 105, 91, 114, 94]
+        }, {
+          name: 'Free Cash Flow',
+          data: [35, 41, 36, 26, 45, 48, 52, 53, 41]
+        }],
+          chart: {
+          type: 'bar',
+          height: 350
+        },
+        plotOptions: {
+          bar: {
+            horizontal: false,
+            columnWidth: '55%',
+            endingShape: 'rounded'
+          },
+        },
+        dataLabels: {
+          enabled: false
+        },
+        stroke: {
+          show: true,
+          width: 2,
+          colors: ['transparent']
+        },
+        xaxis: {
+          categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct'],
+        },
+        yaxis: {
+          title: {
+            text: '$ (thousands)'
+          }
+        },
+        fill: {
+          opacity: 1
+        },
+        tooltip: {
+          y: {
+            formatter: function (val) {
+              return "$ " + val + " thousands"
+            }
+          }
+        }
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart"), options);
+        chart.render();
+
+        //DUMBLE CHART
+        var options = {
+          series: [
+          {
+            data: [
+              {
+                x: '2008',
+                y: [2800, 4500]
+              },
+              {
+                x: '2009',
+                y: [3200, 4100]
+              },
+              {
+                x: '2010',
+                y: [2950, 7800]
+              },
+              {
+                x: '2011',
+                y: [3000, 4600]
+              },
+              {
+                x: '2012',
+                y: [3500, 4100]
+              },
+              {
+                x: '2013',
+                y: [4500, 6500]
+              },
+              {
+                x: '2014',
+                y: [4100, 5600]
+              }
+            ]
+          }
+        ],
+          chart: {
+          height: 350,
+          type: 'rangeBar',
+          zoom: {
+            enabled: false
+          }
+        },
+        plotOptions: {
+          bar: {
+            isDumbbell: true,
+            columnWidth: 3,
+            dumbbellColors: [['#008FFB', '#00E396']]
+          }
+        },
+        legend: {
+          show: true,
+          showForSingleSeries: true,
+          position: 'top',
+          horizontalAlign: 'left',
+          customLegendItems: ['Product A', 'Product B']
+        },
+        fill: {
+          type: 'gradient',
+          gradient: {
+            type: 'vertical',
+            gradientToColors: ['#00E396'],
+            inverseColors: true,
+            stops: [0, 100]
+          }
+        },
+        grid: {
+          xaxis: {
+            lines: {
+              show: true
+            }
+          },
+          yaxis: {
+            lines: {
+              show: false
+            }
+          }
+        },
+        xaxis: {
+          tickPlacement: 'on'
+        }
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart"), options);
+        chart.render();
+        //END
+
+    var options = {
+      chart: {
+        type: 'line'
+      },
+      series: [{
+        name: 'sales',
+        data: [30, 40, 35, 50, 49, 60, 70, 91, 125]
+      }],
+      xaxis: {
+        categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999]
+      }
+    }
+
+    var chart = new ApexCharts(document.querySelector("#sales-chart"), options);
+    chart.render();
+
+    var options = {
+  chart: {
+    height: 350,
+    type: "line",
+    stacked: false
+  },
+  dataLabels: {
+    enabled: false
+  },
+  colors: ["#FF1654", "#247BA0"],
+  series: [
+    {
+      name: "Series A",
+      data: [1.4, 2, 2.5, 1.5, 2.5, 2.8, 3.8, 4.6]
+    },
+    {
+      name: "Series B",
+      data: [20, 29, 37, 36, 44, 45, 50, 58]
+    }
+  ],
+  stroke: {
+    width: [4, 4]
+  },
+  plotOptions: {
+    bar: {
+      columnWidth: "20%"
+    }
+  },
+  xaxis: {
+    categories: [2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016]
+  },
+  yaxis: [
+    {
+      axisTicks: {
+        show: true
+      },
+      axisBorder: {
+        show: true,
+        color: "#FF1654"
+      },
+      labels: {
+        style: {
+          colors: "#FF1654"
+        }
+      },
+      title: {
+        text: "Series A",
+        style: {
+          color: "#FF1654"
+        }
+      }
+    },
+    {
+      opposite: true,
+      axisTicks: {
+        show: true
+      },
+      axisBorder: {
+        show: true,
+        color: "#247BA0"
+      },
+      labels: {
+        style: {
+          colors: "#247BA0"
+        }
+      },
+      title: {
+        text: "Series B",
+        style: {
+          color: "#247BA0"
+        }
+      }
+    }
+  ],
+  tooltip: {
+    shared: false,
+    intersect: true,
+    x: {
+      show: false
+    }
+  },
+  legend: {
+    horizontalAlign: "left",
+    offsetX: 40
+  }
+};
+
+var chart = new ApexCharts(document.querySelector("#chart"), options);
+
+chart.render();
+
+
+
+
+
+
+       
+
+    </script>
+
+   
+    
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Users</h5>
+            <p class="card-text">500</p> <!-- replace with actual data -->
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Logs</h5>
+            <p class="card-text">300</p> <!-- replace with actual data -->
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Forms</h5>
+            <p class="card-text">200</p> <!-- replace with actual data -->
+          </div>
+        </div>
+      </div>
+  
+      <iframe style="background: #b8e1f6;border: none;border-radius: 2px;box-shadow: 0 2px 10px 0 rgba(70, 76, 79, .2);" width="640" height="480" src="https://charts.mongodb.com/charts-project-0-ldxpe/embed/charts?id=64a7cac6-f0f8-4568-85de-148796c1c6f1&maxDataAge=3600&theme=light&autoRefresh=true"></iframe>
+  </div>
 </body>
 </html>
