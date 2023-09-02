@@ -6,7 +6,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
+  <script src="https://kit.fontawesome.com/7f01a542af.js" crossorigin="anonymous"></script>
   <style>
     * {
       margin: 0;
@@ -49,8 +49,8 @@
   color: black;
 }
 .nav{
-  margin-right: 20px;
-  margin-top: 20px;
+  margin-right: 50px;
+  margin-top: 18px;
   font-weight: bold;
 }
 .topnav {
@@ -62,14 +62,9 @@
   position: relative;
   z-index: 2;
 }
-.container{
-  border: 1px solid black;
-  max-width: 100%;
-}
+
 .img{
-  margin: 100px 0 0 100px;
-  max-width: 100%;
-  height: auto;
+  float: left;
 }
 @media (max-width: 768px) {
   .logo {
@@ -77,10 +72,20 @@
   }
 }
 p {
-  font-size: 3.5vw; /* Adjust the value as needed */
+  font-size: 3vw; /* Adjust the value as needed */
   color: #C69B68;
   font-weight: bold;
   margin-left: 30px;
+}
+.lbl{
+   color: #C69B68;
+  font-weight: bold;
+  font-size: 50px;
+}
+@media (max-width: 768px) {
+  label{
+    font-size: 15px;
+  }
 }
 @media (max-width: 768px) {
   p{
@@ -119,9 +124,6 @@ p {
     background-color: rgba(53, 46, 46, 0.204);
     margin-top: 29px;
   }
-
-  
-
   .menu-toggle {
     display: block;
     max-width: 100%;
@@ -130,9 +132,32 @@ p {
   }
 }
 
+.rounded-t-5 {
+        border-top-left-radius: 0.5rem;
+        border-top-right-radius: 0.5rem;
+      }
+  
+      @media (min-width: 992px) {
+        .rounded-tr-lg-0 {
+          border-top-right-radius: 0;
+        }
+  
+        .rounded-bl-lg-5 {
+          border-bottom-left-radius: 0.5rem;
+        }
+      }
+.card{
+  margin: auto;
+  margin-top: 110px;
+  max-width:60%;
+}
+.formc{
+width: 98%;
+height: 40px;
+}
   </style>
 </head>
-  
+<!-- GAWA NI JERICO MAHINAY POGI-->
 <body>
   <div class="topnav">
   
@@ -160,56 +185,79 @@ menuToggle.addEventListener('click', () => {
 });
     </script>
   </div>
-  <div class="container">
-<div class="img">
-    <img class="logo" src="logo.png" alt="">
-   
-  </div>
   <div>
-    <p>We Deliver Good Food</p>
+<div class="img">
+    <img class="logo" src="logo.png" alt="" style="margin-left:60px;">
+    <div>
+      <p>We Deliver Good Food</p>
+    </div>  
   </div>
-  <div class="login-form">
-    <form action="/login" method="post">
-      <h1>Login</h1>
-      <div class="error">
-        <% if (typeof errorMessage !== 'undefined') { %>
-          <p style="color: red;"><%= errorMessage %></p>
-        <% } %>
-      </div>
-      <div class="content">
-        <div class="input-field">
-          <input type="email" placeholder="Email . . . . ." id="email" name="email">
+  
+  <section class="form text-center text-lg-start">
+    <div class="card">
+      <div class="row g-0 d-flex align-items-center">
+        <div class="col-lg-4 d-none d-lg-flex">
+          <img src="food.jpg" alt="Trendy Pants and Shoes"
+            class="w-100 rounded-t-5 rounded-tr-lg-0 rounded-bl-lg-5" />
         </div>
-        <div class="input-field">
-          <input type="password" placeholder="Password . . . . ." id="password" name="password">
-          <span toggle="#password" id="togglePassword" class="fa-fw fa-eye far toggle-password"></span>
-
+        <div class="col-lg-8">
+          <div class="card-body py-5 px-md-5">
+            <div style="text-align: center; margin-top:0;">
+              <label class="lbl">LOGIN</label>
+            </div>
+            <form>
+              <!-- Email input -->
+              <div class="form-outline mb-4">
+                <input type="email" placeholder="Enter Email . . . . ." id="Email" class="formc" />
+              </div>
+  
+              <!-- Password input -->
+              <div class="form-outline mb-4">
+                <input type="password" placeholder="Enter Password . . . . ." id="password" name="password" class="formc">
+                <span toggle="#password" id="togglePassword" class="fa-fw fa-eye far toggle-password"></span>
+              </div>
+              <script>
+                const togglePassword = document.querySelector('#togglePassword');
+                const password = document.querySelector('#password');
+          
+                togglePassword.addEventListener('click', function (e) {
+                // toggle the type attribute
+                const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+                password.setAttribute('type', type);
+                // toggle the eye slash icon
+                this.classList.toggle('fa-eye-slash');
+                  });
+                 </script>
+              <!-- 2 column grid layout for inline styling -->
+              <div class="row mb-4">
+  
+                <div>
+                  <!-- Simple link -->
+                  <a href="#!">Forgot password?</a>
+                </div>
+                <div class="d-flex justify-content-center mb-5">
+                  <label class="lbl" style="font-size: 25px;">Login With</label>
+                </div>
+                <div class=" d-flex justify-content-center">
+                  <a href="https://web.facebook.com/?stype=lo&jlou=AfcxTnUCxIi8nXM6IO9oNTcMCV-_OYgvzhLqB5LWIRGYfli4bpVxr-c-BaSYgFP2XIOF0W6yadcvsVXMDWTgHbp8c-wb4rZNRf_raKqaItIhEQ&smuh=44978&lh=Ac9-55MNYkUPHVy7yOs"> <i class="fa-brands fa-facebook fa-2xl"></i></a><label class="lbl"  style="margin: 0 20px 0 20px;font-size: 20px;">or</label>
+                  <a href=""><i class="fa-brands fa-google fa-2xl"></i></a>
+               </div>
+              </div>
+  
+              <!-- Submit button -->
+              <button type="button" class="btn btn-primary btn-block mb-4">Sign in</button>
+              <div>
+                <!-- Simple link -->
+               <label>Don't Have An Account?</label> <a href="/register"> Register here!</a>
+              </div>
+  
+            </form>
+  
+          </div>
         </div>
-       <script>
-      const togglePassword = document.querySelector('#togglePassword');
-      const password = document.querySelector('#password');
-
-      togglePassword.addEventListener('click', function (e) {
-      // toggle the type attribute
-      const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
-      password.setAttribute('type', type);
-      // toggle the eye slash icon
-      // Jerico Mahinay
-
-      // Jerico Mahinay
-      this.classList.toggle('fa-eye-slash');
-        });
-       </script>
-        <a href="#" class="link">Forgot Your Password?</a>
       </div>
-      <div class="action">
-        <button type="button" onclick="location.href='/register'">Register</button>
-        <button>Sign In</button>
-      </div>
-    </form>
-
-  </div>
-    
+    </div>
+  </section>
 </div>
 </body>
 </html>
