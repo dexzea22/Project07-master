@@ -5,6 +5,8 @@
   <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Rubik:400,700'>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
   <style>
     * {
       margin: 0;
@@ -43,7 +45,7 @@
 }
 
 .topnav a:hover {
-  background-color: #FFF3EB;
+ 
   color: black;
 }
 .nav{
@@ -62,8 +64,71 @@
 }
 .container{
   border: 1px solid black;
+  max-width: 100%;
+}
+.img{
+  margin: 100px 0 0 100px;
+  max-width: 100%;
+  height: auto;
+}
+@media (max-width: 768px) {
+  .logo {
+    width: 80%;
+  }
+}
+p {
+  font-size: 3.5vw; /* Adjust the value as needed */
+  color: #C69B68;
+  font-weight: bold;
+  margin-left: 30px;
+}
+@media (max-width: 768px) {
+  p{
+    font-size: 40px;
+  }
+}
+.menu-toggle {
+  display: none; /* Hide on larger screens */
+  cursor: pointer;
+  
+}
+.bar {
+  width: 30px;
+  height: 3px;
+  background-color: white;
+  margin: 5px 0;
 }
 
+
+
+/* Show menu on smaller screens */
+@media (max-width: 768px) {
+  .menu {
+    display: none;
+    flex-direction: column;
+    background-color: #333;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+  }
+
+  .menu.show {
+    display: flex;
+    background-color: rgba(53, 46, 46, 0.204);
+    margin-top: 29px;
+  }
+
+  
+
+  .menu-toggle {
+    display: block;
+    max-width: 100%;
+    float: right;
+    margin: 25px 15px 0 0;
+  }
+}
 
   </style>
 </head>
@@ -72,17 +137,37 @@
   <div class="topnav">
   
     <a href="/login"><img src="logo.png" height="60px" width="60px"></a>
- 
+    
+
+    <div class="menu">
     <a class="nav" href="#home">Home</a>
     <a class="nav" href="#news">News</a>
     <a class="nav" href="#contact">Contact</a>
     <a class="nav" href="#about">About</a>
   </div>
+  <div class="menu-toggle">
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+  </div>
+    <script>
+      const menuToggle = document.querySelector('.menu-toggle');
+const menu = document.querySelector('.menu');
+
+menuToggle.addEventListener('click', () => {
+  menu.classList.toggle('show');
+});
+    </script>
+  </div>
   <div class="container">
-
-    <img src="logo.png" height="500px" width="500px" alt="">
-    <p style="margin-left: 10px; font-weight: bold; font-size: 50px; color: #C69B68;">We Deliver Good Food</p>
-
+<div class="img">
+    <img class="logo" src="logo.png" alt="">
+   
+  </div>
+  <div>
+    <p>We Deliver Good Food</p>
+  </div>
   <div class="login-form">
     <form action="/login" method="post">
       <h1>Login</h1>
@@ -122,6 +207,7 @@
         <button>Sign In</button>
       </div>
     </form>
+
   </div>
     
 </div>
