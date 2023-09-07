@@ -3,162 +3,350 @@
   <meta charset="UTF-8">
   <title>Register</title>
   <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Rubik:400,700'>
-  <style>
-     * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    -webkit-font-smoothing: antialiased;
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://kit.fontawesome.com/7f01a542af.js" crossorigin="anonymous"></script>  <style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
   }
-  
-  body {
-    background: #146C94;
+.error {
+      text-align: center;
+	  
+    } 
+body {
+	background: #FFF3EB;
+  }
+.topnav {
+  overflow:hidden ;
+  background-color: rgba(53, 46, 46, 0.117);
 }
-  
-  
-  .login-form {
-    background: #AFD3E2;
-    width: 500px;
-    margin: 65px auto;
-    display: -webkit-box;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-            flex-direction: column;
-    border-radius: 4px;
-    box-shadow: 0 2px 25px rgba(0, 0, 0, 0.2);
-  }
-  .login-form h1 {
-  padding: 35px 35px 0 35px;
-  font-weight: bold;
+
+.topnav a {
+  float: left;
+  color: #C69B68;
   text-align: center;
-  font-family: 'Arial', sans-serif;
-  font-style: normal;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
 }
+
+.topnav a:hover {
+ 
+  color: black;
+}
+.nav{
+  margin-right: 50px;
+  margin-top: 18px;
+  font-weight: bold;
+}
+.topnav {
+  color: white;
+}
+.menu-toggle {
+  display: none; /* Hide on larger screens */
+  cursor: pointer;
   
-  .login-form .content {
-    padding: 35px;
-    text-align: center;
-  }
-  .login-form .input-field {
-    padding: 12px 5px;
-  }
-  .error {
-    text-align: center;
-  }
-  .login-form .input-field input {
-    font-size: 16px;
-    display: block;
-    font-family: 'Rubik', sans-serif;
+}
+.bar {
+  width: 30px;
+  height: 3px;
+  background-color: white;
+  margin: 5px 0;
+}
+
+/* Show menu on smaller screens */
+@media (max-width: 768px) {
+  .menu {
+    display: none;
+    flex-direction: column;
+    background-color: #333;
+    position: absolute;
+    top: 60px;
+    left: 0;
     width: 100%;
-    padding: 10px 1px;
-    border: 0;
-    border-bottom: 1px solid #747474;
-    outline: none;
-    -webkit-transition: all .2s;
-    transition: all .2s;
-  }
-  .login-form .input-field input::-webkit-input-placeholder {
-    text-transform: uppercase;
-  }
-  .login-form .input-field input::-moz-placeholder {
-    text-transform: uppercase;
-  }
-  .login-form .input-field input:-ms-input-placeholder {
-    text-transform: uppercase;
-  }
-  .login-form .input-field input::-ms-input-placeholder {
-    text-transform: uppercase;
-  }
-  .login-form .input-field input::placeholder {
-    text-transform: uppercase;
-  }
-  .login-form .input-field input:focus {
-    border-color: #222;
-  }
-  .login-form p {
-    font-size: small;
-    text-decoration: none;
-    color: #1d1d1d;
-    letter-spacing: 0.2px;
-    text-transform: uppercase;
-    display: inline-block;
-    margin-top: 20px;
-  }
-  .login-form a.link {
-    font-size: small;
-    text-decoration: none;
-    color: blue;
-    letter-spacing: 0.2px;
-    text-transform: uppercase;
-    display: inline-block;
-    margin-top: 20px;
-  }
-  .login-form .action {
-    display: -webkit-box;
-    display: flex;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-            flex-direction: row;
-  }
-  .login-form .action button {
-    width: 100%;
-    border: none;
-    padding: 18px;
-    font-family: 'Rubik', sans-serif;
-    cursor: pointer;
-    text-transform: uppercase;
-    background: #e8e9ec;
-    color: #777;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 0;
-    letter-spacing: 0.2px;
-    outline: 0;
-    -webkit-transition: all .3s;
-    transition: all .3s;
-  }
-  .login-form .action button:hover {
-    background: #d8d8d8;
+    z-index: 1;
   }
 
-  .login-form .action button:nth-child(1):hover {
-  background: #007bff;
-  color: #fff;
+  .menu.show {
+    display: flex;
+    background-color: rgba(53, 46, 46, 0.204);
+    margin-top: 29px;
+  }
+  .menu-toggle {
+    display: block;
+    max-width: 100%;
+    float: right;
+    margin: 25px 15px 0 0;
+  }
+}
+
+.rounded-t-5 {
+        border-top-left-radius: 0.5rem;
+        border-top-right-radius: 0.5rem;
+      }
+  
+      @media (min-width: 992px) {
+        .rounded-tr-lg-0 {
+          border-top-right-radius: 0;
+        }
+  
+        .rounded-bl-lg-5 {
+          border-bottom-left-radius: 0.5rem;
+        }
+      }
+      .card-registration .select-input.form-control[readonly]:not([disabled]) {
+font-size: 1rem;
+line-height: 2.15;
+padding-left: .75em;
+padding-right: .75em;
+}
+.card-registration .select-arrow {
+top: 13px;
+}
+.container{
+  height:20px;
+  margin: auto;
+}
+.form-control::placeholder{
+	color: #C69B68;
+	font-weight: 600;
+}
+.form-control{
+
+  box-shadow: inset 0 5px 5px rgba(165, 162, 162, 0.5);
+}
+.btns{
+    background-color:#C69B68;
+    color: #fff; 
+    border: none;
+}
+.img-fluid{
+  height: 658px;
+}
+.ftr{
+	font-size: 1vw;
+	color: #FFF3EB;
+}
+.cntr{
+  margin-top: 850px;
 }
   </style>
 </head>
 <body>
-
-  <div class="login-form">
-    <form action="/register" method="post" name="register">
-      <h1>Register</h1>
-      <div class="error">
-        <% if (typeof errorMessage !== 'undefined') { %>
-          <p style="color: red;"><%= errorMessage %></p>
-        <% } %>
-      </div>
-      <div class="content">
-        <div class="input-field">
-          <input type="email" placeholder="Email" id="email" name="email">
-        </div>
-        <div class="input-field">
-          <input type="password" placeholder="Password" id="password" name="password">
-        </div>
-        <div class="input-field">
-          <label for="usertype">Choose User Type:</label>
-          <select name="usertype">
-            <option value="Admin">Admin</option>
-            <option value="Manager">Manager</option>
-            <option value="User">User</option>
-          </select>
-        </div>
-        <p>Already have an Account? <a href="/login" class="link">Login Here</a></p>
-      </div>
-      <div class="action">
-        <button>Register</button>
-      </div>
-    </form>
-  </div>
+  <div class="topnav">
   
+    <a href="/login"><img src="logo.png" height="60px" width="60px"></a>
+    
+
+    <div class="menu">
+    <a class="nav" href="/login">Home</a>
+    <a class="nav" href="#news">News</a>
+    <a class="nav" href="#contact">Contact</a>
+    <a class="nav" href="#about">About</a>
+  </div>
+  <div class="menu-toggle">
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+  </div>
+    <script>
+      const menuToggle = document.querySelector('.menu-toggle');
+const menu = document.querySelector('.menu');
+
+menuToggle.addEventListener('click', () => {
+  menu.classList.toggle('show');
+});
+    </script>
+  </div>
+  <div class="login-form">
+      <section>
+      <div class="container py-5">
+        <div class="row d-flex justify-content-center align-items-center">
+          <div class="col">
+            <div class="card card-registration my-4">
+              <div class="row g-0">
+                <div class="col-xl-6 d-none d-xl-block">
+                  <img src="reg.jpg" alt="Sample photo" class="img-fluid"
+                    style="border-top-left-radius: .25rem; border-bottom-left-radius: .25rem;" />
+                </div>
+                <div class="col-xl-6">
+                  <div class="card-body p-md-5 text-black">
+                    <h3 class="mb-3 text-uppercase" style="text-align: center; font-weight: bold; color: #C69B68; font-size: 50px;">Register Now!</h3>
+                    <div class="row">
+                      <div class="col-md-6 mb-3">
+                        <div class="form-outline">
+                          <input type="text" id="fname" placeholder="Firstname . . ." class="form-control form-control-lg" />
+                        </div>
+                      </div>
+                      <div class="col-md-6 mb-3">
+                        <div class="form-outline">
+                          <input type="text" id="lname" placeholder="Lastname . . ." class="form-control form-control-lg" />
+                        </div>
+                      </div>
+                    </div>
+    
+                  <div class="row">
+                    <div class="col-md-15 mb-3">
+                       <div class="form-outline">
+                        <input type="text" id="email" placeholder="Email Address . . ." class="form-control form-control-lg" required />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                    <div class="col-md-6 mb-3">
+                    <div class="form-outline mb-4">
+                      <input type="text" id="password" placeholder="Password . . ." class="form-control form-control-lg" />
+                    </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                      <div class="form-outline mb-4">
+                        <input type="text" id="password" placeholder="Confirm   Password . . ." class="form-control form-control-lg" />
+                      </div>
+                      </div>
+                    </div>
+                    <div class="d-md-flex justify-content-start align-items-center mb-4 py-2">
+    
+                      <h6 class="mb-0 me-3">Gender: </h6>
+    
+                      <div class="form-check form-check-inline mb-0 me-3">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="femaleGender"
+                          value="option1" />
+                        <label class="form-check-label" for="femaleGender">Female</label>
+                      </div>
+    
+                      <div class="form-check form-check-inline mb-0 me-3">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="maleGender"
+                          value="option2" />
+                        <label class="form-check-label" for="maleGender">Male</label>
+                      </div>
+    
+                      <div class="form-check form-check-inline mb-0">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="otherGender"
+                          value="option3" />
+                        <label class="form-check-label" for="otherGender">Other</label>
+                      </div>
+    
+                    </div>
+    
+                    <div class="form-outline mb-3">
+                      <input type="text" id="form3Example9" placeholder="Address . . ." class="form-control form-control-lg" />
+                    </div>
+                    <div class="row">
+                    <div class="col-md-6 mb-3 mb-4">
+                      <input type="date" id="bday" class="date form-control form-control-lg" />
+                    </div>
+                    <div class="col-md-6 mb-3 mb-4">
+                      <input type="tel" id="phone" placeholder="Phone number +63" class="form-control form-control-lg" />
+                    </div>
+                  </div>
+                    <div class="d-flex justify-content-center pt-3">
+                      <button type="button" class=" btn btns btn-lg ms-2">Submit form</button>
+                    </div>
+    
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Remove the container if you want to extend the Footer to full width. -->
+<div class="cntr">
+
+	<footer class="text-white text-center text-lg-start" style="background-color: #23242a;">
+	  <!-- Grid container -->
+	  <div class="p-5">
+		
+		<!--Grid row-->
+		
+		<div class="row mt-4">
+			<div class="col-lg-1 col-md-6 mb-4 mb-md-0"></div>
+		  <!--Grid column-->
+		  <div class="col-lg-3 col-md-12 mb-4 mb-md-0">
+			<h5 class="text-uppercase mb-4">About company</h5>
+  
+			<label>
+				Thank you for choosing Maya&Me Services for your food ordering needs. We're here to satisfy your cravings, one delicious meal at a time. Enjoy your meal and have a wonderful day!
+			</label>
+  
+			<div class="mt-4">
+			  <!-- Facebook -->
+			  <a type="button" class="btn btn-floating btn-warning btn-lg"><i class="fab fa-facebook-f"></i></a>
+			  <!-- Dribbble -->
+			  <a type="button" class="btn btn-floating btn-warning btn-lg"><i class="fab fa-dribbble"></i></a>
+			  <!-- Twitter -->
+			  <a type="button" class="btn btn-floating btn-warning btn-lg"><i class="fab fa-twitter"></i></a>
+			  <!-- Google + -->
+			  <a type="button" class="btn btn-floating btn-warning btn-lg"><i class="fab fa-google-plus-g"></i></a>
+			  <!-- Linkedin -->
+			</div>
+		  </div>
+		  <!--Grid column-->
+  <div class="col-lg-1 col-md-6 mb-4 mb-md-0"></div>
+		  <!--Grid column-->
+		  <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+			<h5 class="text-uppercase mb-4 pb-1">Contact Us</h5>
+  
+			<ul class="fa-ul" style="margin-left: 1.65em;">
+			  <li class="mb-3">
+				<span class="fa-li"><i class="fas fa-home"></i></span><span class="ms-2">New York, NY 10012, US</span>
+			  </li>
+			  <li class="mb-3">
+				<span class="fa-li"><i class="fas fa-envelope"></i></span><span class="ms-2">info@example.com</span>
+			  </li>
+			  <li class="mb-3">
+				<span class="fa-li"><i class="fas fa-phone"></i></span><span class="ms-2">+ 01 234 567 88</span>
+			  </li>
+			  <li class="mb-3">
+				<span class="fa-li"><i class="fas fa-print"></i></span><span class="ms-2">+ 01 234 567 89</span>
+			  </li>
+			</ul>
+		  </div>
+		  <!--Grid column-->
+  
+		  <!--Grid column-->
+		  <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+			<h5 class="text-uppercase mb-4">Opening hours</h5>
+  
+			<table class="table text-center text-white">
+			  <tbody class="font-weight-normal">
+				<tr>
+				  <td>Mon - Thu:</td>
+				  <td>8am - 9pm</td>
+				</tr>
+				<tr>
+				  <td>Fri - Sat:</td>
+				  <td>8am - 1am</td>
+				</tr>
+				<tr>
+				  <td>Sunday:</td>
+				  <td>9am - 10pm</td>
+				</tr>
+			  </tbody>
+			</table>
+		  </div>
+		  <!--Grid column-->
+		</div>
+		<!--Grid row-->
+	  </div>
+	  <!-- Grid container -->
+  
+	  <!-- Copyright -->
+	  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+		© 2023 Copyright:
+		<label class="text-white" >Maya&Me Services</label>
+	  </div>
+	  <!-- Copyright -->
+	</footer>
+	
+  </div>
+  <!-- End of .container -->
 </body>
 </html>
