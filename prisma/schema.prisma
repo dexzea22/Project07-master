@@ -15,23 +15,17 @@ model User {
   email     String        @unique
   password  String?
   usertype  String?
-  student   Student_Info?
+  user   User_Info?
 }
 
-model Student_Info {
+model User_Info {
   id            String     @id @default(auto()) @map("_id") @db.ObjectId 
   userId        String    @unique
   lastname      String?
   firstname     String?
-  middlename    String?
   address       String?
-  city          String?
-  region        String? 
-  zipcode       String? 
   birthdate     DateTime   @map("birthdate")
   gender        String?
-  civil_status  String?
-  hobby         String[]
   user          User?      @relation(fields: [userId], references: [id])
 }
 
